@@ -15,4 +15,4 @@ http.createServer(function (req, res) {
     serveStaticFiles(req, res);
 }).listen(port);
 
-console.log('Listening on http://localhost:%d', port);
+// console.log('Listening on http://%s:%d', ip, port);
