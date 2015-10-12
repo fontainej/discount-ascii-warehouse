@@ -1,7 +1,9 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp) {
 
     'use strict';
 
-    gulp.task('build', o.plugins.sequence('clean', 'lint', 'browserify', ['js', 'css', 'html']));
+    var sequence = require('gulp-sequence');
+
+    gulp.task('build', sequence('clean', 'jshint', 'browserify', ['scripts', 'styles', 'views']));
 };

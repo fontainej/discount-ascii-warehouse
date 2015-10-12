@@ -1,14 +1,14 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp, config) {
 
     'use strict';
 
+    var sequence = require('gulp-sequence');
+
     gulp.task('watch', function () {
 
-        gulp.watch([
-            o.config.js.source,
-            o.config.css.source,
-            o.config.html.source
-        ], ['lint', 'browserify', 'js', 'css', 'html']);
+        gulp.watch(config.paths().scripts.src, sequence('jshint', 'browserify', 'scripts'));
+        gulp.watch(config.paths().styles.src, ['styles']);
+        gulp.watch(config.paths().views.src, ['views']);
     });
 };

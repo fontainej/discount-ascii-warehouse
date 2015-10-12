@@ -14,17 +14,12 @@
   },
   "devDependencies": {
     "angular": "^1.5.0-beta.0",
-    "bower": "^1.5.2",
     "browser-sync": "^2.8.2",
     "browserify": "^11.1.0",
-    "consolidate": "^0.13.1",
-    "del": "~1.1.1",
     "gulp": "^3.9.0",
-    "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "~2.5.2",
     "gulp-jshint": "^1.11.2",
-    "gulp-load-plugins": "~0.10.0",
     "gulp-nodemon": "^2.0.4",
     "gulp-ruby-sass": "^1.4.0",
     "gulp-sequence": "^0.4.1",
@@ -32,7 +27,6 @@
     "gulp-uglify": "^1.4.1",
     "gulp-util": "~3.0.4",
     "require-dir": "^0.3.0",
-    "uglify": "^0.1.5",
-    "underscore": "^1.8.3"
+    "vinyl-source-stream": "^1.1.0"
   }
 }

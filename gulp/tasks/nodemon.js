@@ -1,35 +1,42 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp, config) {
 
     'use strict';
+
+    var nodemon = require('gulp-nodemon');
+    var browserSync = require('browser-sync');
 
     gulp.task('nodemon', function (cb) {
 
         var called = false;
 
-        return o.plugins.nodemon({
-                script: o.config.server.script,
-                watch: [o.config.js.source]
-            })
+        nodemon({
 
-            .on('start', function onStart() {
+            script: config.server().script,
 
-                if (!called) {
-                    cb();
-                }
+            watch: config.paths().scripts.src
+        })
 
-                called = true;
-            })
+        .on('start', function onStart() {
 
-            .on('restart', function onRestart() {
+            if (!called) {
 
-                setTimeout(function reload() {
+                cb();
+            }
 
-                    o.plugins.browserSync.reload({
-                        stream: false
-                    });
+            called = true;
+        })
 
-                }, o.config.browserSyncReloadDelay);
-            });
+        .on('restart', function onRestart() {
+
+            setTimeout(function reload() {
+
+                browserSync.reload({
+
+                    stream: false
+                });
+
+            }, config.server().browserSyncReloadDelay);
+        });
     });
 };

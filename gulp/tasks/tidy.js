@@ -1,12 +1,14 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp, config) {
 
     'use strict';
 
+    var clean = require('gulp-clean');
+
     gulp.task('tidy', function () {
 
-        return gulp.src(o.config.dist, { read: false })
+        gulp.src(config.paths().dist, { read: false })
 
-            .pipe(o.plugins.clean({ force: true }));
+            .pipe(clean({ force: true }));
     });
 };

@@ -1,18 +1,25 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp, config) {
 
     'use strict';
 
+    var util = require('gulp-util');
+
     function handleError(error) {
 
-        var errorMessage = o.plugins.util.colors.red(error);
+        var errorMessage = util.colors.red(error);
 
-        o.plugins.util.log(errorMessage);
+        util.log(errorMessage);
 
         // stops plugin errors killing the watch task
-        if (o.config.exitOnError) {
+        if (config.exitOnError) {
 
             process.exit(1);
         }
     }
+
+    return {
+
+        handleError: handleError
+    };
 };

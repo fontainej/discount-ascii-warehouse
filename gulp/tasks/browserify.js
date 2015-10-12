@@ -1,19 +1,20 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp, config) {
 
     'use strict';
 
+    var browserify = require('browserify');
+    var concat = require('gulp-concat');
+    var source = require('vinyl-source-stream');
+
     gulp.task('browserify', function () {
 
-        return gulp.src([o.config.js.main])
+         browserify(config.paths().scripts.main, config.browserify())
 
-            .pipe(o.plugins.browserify({
-                insertGlobals: true,
-                debug: true
-            }))
+            .bundle()
 
-            .pipe(o.plugins.concat(o.config.js.name))
+            .pipe(source(config.paths().scripts.name))
 
-            .pipe(gulp.dest(o.config.js.dist));
+            .pipe(gulp.dest(config.paths().scripts.dest));
     });
 };

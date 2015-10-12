@@ -1,5 +1,5 @@
 
-module.exports = function (gulp, o) {
+module.exports = function (gulp, config) {
 
     'use strict';
 
@@ -9,12 +9,12 @@ module.exports = function (gulp, o) {
 
         browserSync.init({
             files: [
-                o.config.js.source,
-                o.config.css.source,
-                o.config.html.source
+                config.js.source,
+                config.css.source,
+                config.html.source
             ],
-            proxy: 'http://' + o.config.server.host + ':' + o.config.server.port,
-            port: o.config.server.port
+            proxy: 'http://' + config.server.host + ':' + config.server.port,
+            port: config.server.port
         });
 
         // TODO: Setup to watch html files from here and reload .pipe(reload({ stream: true }))
